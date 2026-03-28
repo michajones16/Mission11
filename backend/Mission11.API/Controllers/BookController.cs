@@ -12,10 +12,15 @@ namespace Mission11.API.Controllers
 
         public BookController(BookstoreDbContext temp) => _bookContext = temp;
 
-        [HttpGet]
-        public IActionResult Get(int pageSize = 5, int pageNum = 1, string sortOrder = "")
+        [HttpGet("AllBooks")]
+        public IActionResult GetBooks(int pageSize = 5, int pageNum = 1, string sortOrder = "", [FromQuery] List<string>? BookTypes = null)
         {
             var query = _bookContext.Books.AsQueryable();
+
+            if (BookTypes != null && BookTypes.Any())
+            {
+                query = query.Where(b => BookTypes.Contains(b.Category));
+            }
 
             if (sortOrder == "asc")
             {
@@ -26,12 +31,12 @@ namespace Mission11.API.Controllers
                 query = query.OrderByDescending(b => b.Title);
             }
 
+            var numBooks = query.Count();
+
             var books = query
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
-
-            var numBooks = _bookContext.Books.Count();
 
             var response = new
             {
@@ -40,6 +45,17 @@ namespace Mission11.API.Controllers
             };
 
             return Ok(response);
+        }
+
+        [HttpGet("GetBookTypes")]
+        public IActionResult GetBookTypes()
+        {
+            var bookTypes = _bookContext.Books
+                .Select(b => b.Category)
+                .Distinct()
+                .ToList();
+
+            return Ok(bookTypes);
         }
     }
 }
