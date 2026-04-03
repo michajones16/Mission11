@@ -57,7 +57,7 @@ export const addBook = async (newBook: Book): Promise<Book> => {
 
 export const updateBook = async (bookID: number, updatedBook: Book): Promise<Book> => {
     try {
-        const response = await fetch(`${API_URL},/UpdateBook/${bookID}`, {
+        const response = await fetch(`${API_URL}/UpdateBook/${bookID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
