@@ -16,7 +16,7 @@ builder.Services.AddCors(options => {
     options.AddPolicy("AllowReactApp", policy => {
         policy.WithOrigins(
                 "http://localhost:3000",
-                "https://your-deployed-website.com"
+                "https://mango-mushroom-0dd27c11e.1.azurestaticapps.net"
              )
             .AllowAnyHeader()
             .AllowAnyMethod();
