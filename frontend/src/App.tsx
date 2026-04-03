@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import BooksPage from './pages/BooksPage'
 import CartPage from './pages/CartPage'
 import ShopPage from './pages/ShopPage'
+import AdminBooksPage from './pages/AdminBooksPage';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route path='/books' element={<BooksPage />} />
             <Route path='/shop/:title/:bookID' element={<ShopPage />} />
             <Route path='/cart' element={<CartPage />} />
+            <Route path='/adminbooks' element={<AdminBooksPage />} />
           </Routes>
         </Router>
       </CartProvider>

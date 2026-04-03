@@ -43,8 +43,8 @@ function ShopPage() {
     return (
         <>
             <WelcomeBand />
-            <h2>Add <em>{title}</em> to Cart</h2>
-            <p>Price: ${price.toFixed(2)}</p>
+            <h2 className="text-center">Add <em>{title}</em> to Cart</h2>
+            <p className="text-center mb-4 text-muted border-bottom w-50 mx-auto pb-3">Price: ${price.toFixed(2)}</p>
             <div className="d-flex gap-2 justify-content-center">
                 <input
                     type="number"
@@ -52,11 +52,11 @@ function ShopPage() {
                     value={quantity}
                     onChange={(x) => setQuantity(Number(x.target.value))}
                 />
-                <button className="btn btn-primary" onClick={handleAddToCart}>Add to Cart</button>
+                <button className="btn btn-primary shop-btn" onClick={handleAddToCart}><i className="bi bi-cart-fill me-2"></i> Add to Cart</button>
             </div>
             <br />
             <div className="d-flex justify-content-center">
-                <button className="btn btn-secondary mt-3" onClick={() => navigate(-1)}>Back to Books</button>
+                <button className="btn btn-secondary mt-3 shop-btn" onClick={() => navigate(-1)}>Back to Books</button>
             </div>
 
             {/* Toast notification */}

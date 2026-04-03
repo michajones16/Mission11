@@ -7,24 +7,19 @@ const CartSummary = () => {
     const totalAmount = cart.reduce((total, item) => total + item.subtotal, 0);
 
     return (
-        <div style={{
+        <div className="cart-summary-tag" style={{
             position: "fixed",
-            top: '10px',
-            right: '20px',
-            background: '#f8f9fa',
-            padding: "10px 15px",
-            borderTop: "1px solid #dee2e6",
-            borderLeft: "1px solid #dee2e6",
-            borderRadius: "8px",
+            top: '15px',
+            right: '25px',
+            padding: "10px 18px",
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-            fontSize: '16px',
+            fontSize: '17px',
             zIndex: 1000,
         }}
             onClick={() => navigate('/cart')}
-        ><i className="bi bi-cart"></i> <span className="badge bg-primary">{cart.reduce((sum, item) => sum + item.quantity, 0)}</span> <strong>${totalAmount.toFixed(2)}</strong>
+        ><i className="bi bi-cart-fill" style={{ marginRight: '8px' }}></i> <span className="badge bg-primary">{cart.reduce((sum, item) => sum + item.quantity, 0)}</span> <strong>${totalAmount.toFixed(2)}</strong>
         </div>
     )
 }

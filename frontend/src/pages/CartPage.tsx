@@ -10,10 +10,10 @@ function CartPage() {
     return (
         <>
             <WelcomeBand />
-            <h2>Your Cart</h2>
+            <h2 className="text-center">Your Cart</h2>
             <div>
                 {cart.length === 0 ? (
-                    <p>Your cart is empty</p>
+                    <p className="text-center text-muted mt-4">Your cart is empty</p>
                 ) : (
                     <div>
                         {cart.map((item: CartItem) => (
@@ -41,10 +41,10 @@ function CartPage() {
                 )}
             </div>
             <br />
-            <h3>Total: ${cart.reduce((sum, item) => sum + item.subtotal, 0).toFixed(2)}</h3>
+            <h3 className="text-center mb-4">Total: ${cart.reduce((sum, item) => sum + item.subtotal, 0).toFixed(2)}</h3>
             <div className="d-flex gap-2 justify-content-center">
-                <button className="btn btn-success">Checkout</button>
-                <button className="btn btn-primary" onClick={() => navigate('/books')}>Continue Shopping</button>
+                <button className="btn btn-success shop-btn">Checkout</button>
+                <button className="btn btn-primary shop-btn" onClick={() => navigate('/books')}>Continue Shopping</button>
             </div>
         </>
     )
